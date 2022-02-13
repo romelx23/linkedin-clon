@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navbar {
+  @apply px-3 pt-1 hover:bg-blue-300 hover:cursor-pointer relative 
+  bg-blue-600 w-14 border-b py-2 lg:py-0 lg:border-0 lg:h-full lg:w-auto lg:px-2;
+}
+
+.cardPublication {
+  @apply w-4/5 max-w-3xl lg:w-full bg-purple-600 p-3 flex flex-col justify-center items-center rounded-lg text-white;
+}
+
+:root {
+  scroll-behavior: smooth;
+}
+
+@keyframes entry {
+  0%{
+    transform: translateY(-10%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  100% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+.bounce{
+  animation: entry .5s ease;
+}
