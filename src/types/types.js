@@ -6,6 +6,8 @@ export const types = {
     toggle_on:'[Toggle] Toggle On',
     toggle_off:'[Toggle] Toggle Off',
     toggle_Darkmode:'[Toggle] Toggle Darkmode',
+
+    themePage:'[Theme] Theme Page',
     
     createPost:'[Post] Create Post',
     refreshPosts:'[Post] Refresh Post',

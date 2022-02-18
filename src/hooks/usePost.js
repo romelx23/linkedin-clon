@@ -1,6 +1,5 @@
 import {
   collection,
-  limit,
   onSnapshot,
   orderBy,
   query,

@@ -2,9 +2,31 @@ module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
-  darkMode:"class",
+  darkMode: "class",
   theme: {
     extend: {
+      textColors:{
+        skin:{
+          base:'var(--color-text-base)',
+          muted:'var(--color-text-muted)',
+          inverted:'var(--color-text-inverted)',
+        }
+      },
+      backgroundColor:{
+        skin:{
+          fill:'var(--color-fill)',
+          'card-muted':'var(--color-text-muted)',
+          'text-inverted':'var(--color-text-inverted)',
+          'button-accent':'var(--color-button-accent)',
+          'button-accent-hover':'var(--color-button-accent-hover)',
+          'button-muted':'var(--color-button-muted)',
+        }
+      },
+      gradientColor:{
+        skin:{
+          hue:'var(--color-fill)'
+        }
+      },
       colors:{
         'primary':'#06141d',
         'secondary':'#1b2730',

@@ -4,6 +4,7 @@ import { authReducer } from '../reducers/authReducer';
 import { postReducer } from '../reducers/postRducer';
 import { toggleReducer } from '../reducers/toggleReducer';
 import thunk from 'redux-thunk';
+import { uiReducer } from '../reducers/uiReducere';
 // import logger from 'redux-logger'
 
 const preloadedState = {
@@ -27,6 +28,7 @@ const reducers=combineReducers({
   toggle:toggleReducer,
   auth:authReducer,
   post:postReducer,
+  ui:uiReducer,
 })
 
 // const thunk=createAsyncThunk()

@@ -1,10 +1,25 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { authRegister } from "../actions/auth";
 import { NavbarAuth } from "../components/NavbarAuth/NavbarAuth";
+import { validateForm } from "../helpers/validateForm";
+import { useForm } from "../hooks/useForm";
 
 export const RegisterScreen = () => {
-  const handleSubmit=(e)=>{
+  const [values, handleChange,reset] = useForm({
+    email: "",
+    password: "",
+    password2: "",
+    name:""
+  });
+  const {email,password,password2,name}=values;
+  const dispatch = useDispatch();
+  const handleSubmit = (e) => {
     e.preventDefault();
-  }
+    validateForm(values);
+    dispatch(authRegister(email,password,name));
+    reset();
+  };
   return (
     <div className="w-full h-screen bg-gray-400 p-3">
       <NavbarAuth />
@@ -22,21 +37,29 @@ export const RegisterScreen = () => {
             <div className="flex flex-col gap-2">
               <input
                 type="text"
+                name="name"
+                onChange={handleChange}
                 className="max-w-md w-full p-3 border-2 shadow-md rounded-3xl"
                 placeholder="Nombre de Usuario"
               />
               <input
                 type="email"
+                name="email"
+                onChange={handleChange}
                 className="max-w-md w-full p-3 border-2 shadow-md rounded-3xl"
                 placeholder="Email"
               />
               <input
                 type="password"
+                name="password"
+                onChange={handleChange}
                 className="max-w-md w-full p-3 border-2 shadow-md rounded-3xl"
                 placeholder="Contraseña"
               />
               <input
                 type="password"
+                name="password2"
+                onChange={handleChange}
                 className="max-w-md w-full p-3 border-2 shadow-md rounded-3xl"
                 placeholder="Confirmar contraseña"
               />

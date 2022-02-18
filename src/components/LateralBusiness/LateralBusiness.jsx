@@ -1,8 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 export const LateralBusiness = () => {
+  const {theme}=useSelector(state=>state.ui)
   return <div className='col-start-9 col-end-12 hidden lg:flex justify-center'>
-    <div className="w-4/5 h-fit bg-blue-300 rounded-lg p-3 flex flex-col gap-2">
+    <div className={`w-4/5 h-fit rounded-lg p-3 flex flex-col gap-2 bg-skin-text-inverted ${theme} text-white`}>
       <div className='flex justify-between items-center'>
         <h3>Añadir a tu feed</h3>
         <i className="fas fa-info text-xs w-4 h-4 flex justify-center items-center rounded-sm bg-gray-600 text-white"></i>

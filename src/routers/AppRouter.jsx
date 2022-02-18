@@ -4,8 +4,6 @@ import { useDispatch } from "react-redux";
 import { BrowserRouter, Routes,Route } from "react-router-dom";
 import { login } from "../actions/auth";
 import { StartloadPost } from "../actions/post";
-import { LoginScreen } from "../screens/LoginScreen";
-import { RegisterScreen } from "../screens/RegisterScreen";
 import { DashboardPrivate } from "./DashboardPrivate";
 import { DashboardRoutes } from "./DashboardRoutes";
 import { PrivateRoute } from "./PrivateRoute";

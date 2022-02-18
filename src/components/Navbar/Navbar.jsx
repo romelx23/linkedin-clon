@@ -4,11 +4,13 @@ import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { offToggle, onToggle } from "../../actions/toggle";
 import { MenuProfile } from "../MenuProfile/MenuProfile";
+import { SearchUsers } from "../SearchUsers/SearchUsers";
 
 export const Navbar = () => {
   const dispatch = useDispatch();
   const { toggleOn } = useSelector((state) => state.toggle);
   const { name, photoUrl } = useSelector((state) => state.auth);
+  const {theme}=useSelector(state=>state.ui)
   const handleToggle = () => {
     if (!toggleOn) {
       dispatch(onToggle());
@@ -19,28 +21,24 @@ export const Navbar = () => {
   };
   return (
     <div div className="relative w-full">
-      <div className="bg-blue-600 w-full h-14 flex justify-between px-5 text-white z-40">
+      <div className={`bg-blue-600 bg-skin-button-muted ${theme} w-full h-14 flex justify-between px-5 text-white z-40`}>
         <div className="flex flex-row items-center">
           <h1 className="px-2 font-we">
             <i className="fab fa-linkedin-in"></i>
           </h1>
-          <input
-            type="text"
-            placeholder="search"
-            className="p-2 pl-7 rounded text-black"
-          />
+          <SearchUsers/>
         </div>
         <div className="flex flex-wrap ">
-          <div className="flex flex-col items-center absolute right-2 top-14 lg:flex-row lg:relative lg:top-0">
+          <div className="flex flex-col items-center absolute right-2 top-14 lg:flex-row lg:relative lg:top-0 bg-blue-600 lg:bg-transparent">
             <NavLink
               to="/home"
               className={({ isActive }) =>
-                `navbar  ${
-                  isActive ? "lg:bg-blue-300" : ""
+                `navbar hover:bg-skin-fill ${theme}  ${
+                  isActive ? `lg:bg-skin-fill ${theme}` : ""
                 }`
               }
             >
-              <span className="bg-red-600 block absolute w-3.5 h-3.5 rounded-full top-1 right-2 text-xs font-semibold">
+              <span className="badge">
                 +1
               </span>
               <i className="fas fa-home"></i>
@@ -49,12 +47,12 @@ export const Navbar = () => {
             <NavLink
               to="/mis-redes"
               className={({ isActive }) =>
-                `navbar  ${
-                  isActive ? "lg:bg-blue-300" : ""
+                `navbar hover:bg-skin-fill ${theme}  ${
+                  isActive ? `lg:bg-skin-fill ${theme}` : ""
                 }`
               }
             >
-              <span className="bg-red-600 block absolute w-3.5 h-3.5 rounded-full top-1 right-2 text-xs font-semibold">
+              <span className="badge">
                 +1
               </span>
               <i className="fas fa-network-wired"></i>
@@ -63,12 +61,12 @@ export const Navbar = () => {
             <NavLink
               to="/empleos"
               className={({ isActive }) =>
-                `navbar  ${
-                  isActive ? "lg:bg-blue-300" : ""
+                `navbar hover:bg-skin-fill ${theme} ${
+                  isActive ? `lg:bg-skin-fill ${theme}` : ""
                 }`
               }
             >
-              <span className="bg-red-600 block absolute w-3.5 h-3.5 rounded-full top-1 right-4 text-xs font-semibold">
+              <span className="badge">
                 +1
               </span>
               <i className="fas fa-briefcase"></i>
@@ -77,12 +75,12 @@ export const Navbar = () => {
             <NavLink
               to="/mensajes"
               className={({ isActive }) =>
-                `navbar  ${
-                  isActive ? "lg:bg-blue-300" : ""
+                `navbar hover:bg-skin-fill ${theme}  ${
+                  isActive ? `lg:bg-skin-fill ${theme}` : ""
                 }`
               }
             >
-              <span className="bg-red-600 block absolute w-3.5 h-3.5 rounded-full top-1 right-3 text-xs font-semibold">
+              <span className="badge">
                 +1
               </span>
               <i className="far fa-comment-dots"></i>
@@ -91,12 +89,12 @@ export const Navbar = () => {
             <NavLink
               to="/notificaciones"
               className={({ isActive }) =>
-                `navbar ${
-                  isActive ? "lg:bg-blue-300" : ""
+                `navbar hover:bg-skin-fill ${theme} ${
+                  isActive ? `lg:bg-skin-fill ${theme}` : ""
                 }`
               }
             >
-              <span className="bg-red-600 block absolute w-4 h-4 rounded-full top-1 right-8 text-xs font-semibold">
+              <span className="badge">
                 +1
               </span>
               <i className="far fa-bell"></i>
@@ -106,12 +104,12 @@ export const Navbar = () => {
               onClick={handleToggle}
               className={`${
                 toggleOn ? "lg:bg-blue-300" : "bg-blue-600"
-              } px-3 pt-1 hover:lg:bg-blue-300 hover:cursor-pointer relative h-14 w-20 flex flex-col items-center`}
+              } px-3 pt-1 hover:lg:bg-blue-300 hover:cursor-pointer relative h-14 w-20 flex flex-col items-center justify-center`}
             >
               <img
                 src={photoUrl?photoUrl:"https://c4.wallpaperflare.com/wallpaper/77/364/1022/anime-girls-anime-profile-face-wallpaper-preview.jpg"}
                 alt="bg-avatar"
-                className={`${toggleOn?"scale-75 rounded-full":"w-6 h-6 rounded-full object-cover"} transition-transform delay-75`}
+                className={`${toggleOn?"scale-75 rounded-full h-16 w-16 object-cover":"w-7 h-7 rounded-full object-cover"} transition-transform delay-75`}
               />
               <h3 className="text-xs h-4.5 overflow-hidden text-ellipsis">
                 {name?name:'Yo'} 

@@ -4,7 +4,7 @@ import { AppRouter } from './routers/AppRouter';
 
 function App() {
   return (
-    <div className="App dark:bg-black">
+    <div className="App dark">
       <AppRouter/>
     </div>
   );

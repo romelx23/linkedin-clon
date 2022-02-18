@@ -1,17 +1,20 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Jobs } from "../components/Jobs/Jobs";
+import { Layout } from "../components/Layout/Layout";
 import { Navbar } from "../components/Navbar/Navbar";
 
 export const JobScreen = () => {
+  const {theme}=useSelector(state=>state.ui)
   return (
     <div>
       <Navbar />
-      <div className="bg-blue-700 min-h-screen text-white">
-        <div className="lg:flex lg:justify-center lg:flex-row lg:items-start flex flex-col items-center mx-5 gap-3">
+      <Layout>
+        <div className="lg:flex lg:justify-center lg:flex-row lg:items-start flex flex-col items-center mx-5 text-white gap-3">
           <Jobs />
 
           <div className="col-start-4 col-end-9 lg:w-networks h-full">
-            <div className="w-full h-fit  my-4 bg-blue-300 rounded-lg flex flex-col items-start p-3">
+            <div className={`w-full h-fit  my-4 rounded-lg flex flex-col items-start p-3 bg-skin-text-inverted ${theme}`}>
               <div className="w-full flex justify-between">
                 <h3 className="text-white font-semibold">
                   Ninguna invitación pendiente
@@ -47,7 +50,7 @@ export const JobScreen = () => {
               </div>
             </div>
 
-            <div className="w-full h-fit bg-blue-300 rounded-lg flex flex-col items-start p-3">
+            <div className={`w-full h-fit rounded-lg flex flex-col items-start p-3 bg-skin-text-inverted ${theme}`}>
               <div className="w-full flex justify-between">
                 <h3 className="text-white font-semibold flex flex-col text-left">
                   Oportunidades en remoto
@@ -132,7 +135,7 @@ export const JobScreen = () => {
             </div>
           </div> */}
         </div>
-      </div>
+      </Layout>
     </div>
   );
 };

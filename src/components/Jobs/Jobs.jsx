@@ -1,8 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 export const Jobs = () => {
+  const {theme}=useSelector(state=>state.ui)
   return (
-    <div className="col-start-1 col-end-4 h-fit flex flex-col gap-2 w-96 rounded-lg bg-blue-300 p-3 mt-4 mx-auto lg:mx-0">
+    <div className={`col-start-1 col-end-4 h-fit flex flex-col gap-2 w-96 rounded-lg p-3 mt-4 mx-auto lg:mx-0 bg-skin-text-inverted ${theme}`}>
       <h3>Gestionar mi red</h3>
       <button className="flex justify-between">
         <div className="flex items-center gap-2">

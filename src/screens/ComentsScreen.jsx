@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -14,6 +15,7 @@ export const ComentsScreen = () => {
   });
   const { id } = useParams();
   const { coment: coments } = useGetComents(id);
+  const {theme}=useSelector(state=>state.ui)
   // const { posts } = useSelector((state) => state.post);
   const {posts}=usePost();
   const postfilter = posts.filter((el) => el.id === id);
@@ -45,9 +47,9 @@ export const ComentsScreen = () => {
   }, []);
 
   return (
-    <div className="w-full min-h-screen flex flex-col items-center bg-blue-700 ">
+    <div className={`w-full min-h-screen flex flex-col items-center bg-skin-fill ${theme}`}>
       <Navbar />
-      <div className="flex w-full justify-center gap-4">
+      <div className="flex w-full justify-center gap-4 flex-col items-center lg:flex-row lg:items-stretch">
         {postfilter ? (
           <div className="max-w-xl w-full py-5 bounce">
             {postfilter ? (
@@ -74,6 +76,8 @@ export const ComentsScreen = () => {
           </form>
           {coments.map((item) => {
             const key = Math.random().toString(36).slice(2);
+            const fecha=item.date.seconds*1000;
+            const fechaParsed=moment(fecha).locale('es').startOf('minutes').fromNow()
             return (
               <div key={key} className="w-full h-28  flex items-center">
                 <img
@@ -88,7 +92,7 @@ export const ComentsScreen = () => {
                 <div className="flex flex-col items-start ml-3 bg-purple-500 w-full rounded-md p-3 text-gray-100 font-semibold">
                   <h3 className="font-semibold">{item.username}</h3>
                   <h3>{item.coment}</h3>
-                  <h3 className="text-sm">hace 2 días</h3>
+                  <h3 className="text-sm">{fechaParsed}</h3>
                 </div>
               </div>
             );

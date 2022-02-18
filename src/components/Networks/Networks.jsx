@@ -1,8 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 export const Networks = () => {
+  const {theme}=useSelector(state=>state.ui)
   return (
-    <div className="col-start-2 col-end-5 h-fit flex flex-col gap-2 w-80 rounded-lg bg-blue-300 p-3">
+    <div className={`col-start-2 col-end-5 h-fit flex flex-col gap-2 w-full lg:w-80 rounded-lg p-3 bg-skin-text-inverted ${theme}`}>
       <h3>Gestionar mi red</h3>
       <button className="flex justify-between">
         <div className="flex items-center gap-2">

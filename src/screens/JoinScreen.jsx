@@ -1,10 +1,21 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { authLogin } from "../actions/auth";
 import { NavbarAuth } from "../components/NavbarAuth/NavbarAuth";
+import { useForm } from "../hooks/useForm";
 
 export const JoinScreen = () => {
-  const handleSubmit=(e)=>{
+  const [values, handleChange,reset] = useForm({
+    email: "",
+    password: "",
+  });
+  const {email,password}=values;
+  const dispatch = useDispatch();
+  const handleSubmit = (e) => {
     e.preventDefault();
-  }
+    dispatch(authLogin(email,password));
+    reset();
+  };
   return (
     <div className="w-full h-screen bg-gray-400 p-3">
       <NavbarAuth />
@@ -22,17 +33,21 @@ export const JoinScreen = () => {
             <div className="flex flex-col gap-2">
               <input
                 type="email"
+                name="email"
+                onChange={handleChange}
                 className="max-w-md w-full p-3 border-2 shadow-md rounded-3xl"
                 placeholder="Email"
               />
               <input
                 type="password"
+                name="password"
+                onChange={handleChange}
                 className="max-w-md w-full p-3 border-2 shadow-md rounded-3xl"
                 placeholder="Contraseña"
               />
             </div>
             <button className="max-w-md w-full flex justify-center gap-2 mt-3 p-3 border-2 shadow-md rounded-3xl hover:bg-blue-600 hover:text-white">
-                Ingresar
+              Ingresar
             </button>
             <button className="max-w-md w-full flex justify-center gap-2 mt-3 p-3 border-2 shadow-md rounded-3xl hover:bg-blue-600 hover:text-white">
               <img

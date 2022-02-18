@@ -2,10 +2,11 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 export const LateralProfile = () => {
+  const {theme}=useSelector(state=>state.ui)
   const { name, photoUrl } = useSelector((state) => state.auth);
   return (
     <div className="hidden lg:flex flex-col justify-start items-center col-start-1 col-end-4 gap-2 w-full">
-      <div className="flex flex-col justify-between items-center rounded-lg bg-blue-300 w-4/5 h-4.5 relative z-0 overflow-hidden text-white">
+      <div className={`flex flex-col justify-between items-center rounded-lg w-4/5 h-4.5 relative z-0 overflow-hidden text-white bg-skin-text-inverted ${theme}`}>
         <img
           src="https://c4.wallpaperflare.com/wallpaper/77/364/1022/anime-girls-anime-profile-face-wallpaper-preview.jpg"
           alt="bg-avatar"
@@ -39,7 +40,7 @@ export const LateralProfile = () => {
           <h3 className="font-semibold">Marcapáginas</h3>
         </div>
       </div>
-      <div className="flex flex-col justify-around items-center rounded-md bg-blue-300 w-4/5 h-96 p-3 text-white">
+      <div className={`flex flex-col justify-around items-center rounded-md w-4/5 h-96 p-3 text-white bg-skin-text-inverted ${theme}`}>
         <div className="flex justify-between w-full ">
           <h3>Recientes</h3>
           <i className="fas fa-chevron-up"></i>
