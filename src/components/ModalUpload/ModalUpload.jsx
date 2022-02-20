@@ -119,7 +119,7 @@ export const ModalUpload = ({ modal, toggle, show }) => {
                   <div className="flex justify-center py-4">
                     {url !== "" ? (
                       <img
-                        src={url && url}
+                        src={url?url:null}
                         alt="preview"
                         className="w-auto h-56 bg-slate-300 rounded-lg object-cover"
                       />

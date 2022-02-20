@@ -45,6 +45,7 @@ module.exports = {
       },
       height:{
         'message':'80vh',
+        'chat':'40vh'
       },
       width:{
         'notification':'550px',

@@ -7,7 +7,7 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 import Swal from "sweetalert2";
 import { auth, db } from "../firebase/config";
 import { types } from "../types/types";
@@ -64,13 +64,13 @@ export const LoginWithGoogle = () => {
 
 // })
 
-export const setUser = (uid='', displayName='', photoURL='') => {
-  return async()=>{
+export const setUser = (uid = "", displayName = "", photoURL = "") => {
+  return async () => {
     const docRef = await setDoc(doc(db, `user/${uid}`), {
       displayName,
       photoURL,
     });
-  }
+  };
 };
 
 export const authRegister = (email, password, name) => {
@@ -81,10 +81,10 @@ export const authRegister = (email, password, name) => {
         // Signed in
         const user = userCredential.user;
         if (user.displayName) {
-          console.log(user.displayName)
+          console.log(user.displayName);
         } else {
-          console.log('no name')
-          console.log(user.uid)
+          console.log("no name");
+          console.log(user.uid);
           const photoURL =
             "https://res.cloudinary.com/react-romel/image/upload/v1617636275/n2c8uanoks7hjod45fjd.jpg";
           updateProfile(user, {
@@ -110,7 +110,7 @@ export const authRegister = (email, password, name) => {
 };
 
 export const authLogin = (email, password) => {
-  return (dispatch)=>{
+  return (dispatch) => {
     const auth = getAuth();
     // const { setUser } = useContext(AuthContext);
     signInWithEmailAndPassword(auth, email, password)
@@ -119,7 +119,7 @@ export const authLogin = (email, password) => {
         const user = userCredential.user;
         // const {displayName,photoURL}=user;
         console.log(user.displayName);
-        const {uid, displayName, photoURL}=user;
+        const { uid, displayName, photoURL } = user;
         dispatch(login(uid, displayName, photoURL));
         Swal.fire({
           icon: "success",
@@ -136,5 +136,89 @@ export const authLogin = (email, password) => {
           text: `${errorMessage}`,
         });
       });
-  }
+  };
+};
+
+export const sendRequestFriend = (
+  uid = "",
+  displayName = "",
+  photoURL = "",
+  id = ""
+) => {
+  const fecha = new Date();
+  return async () => {
+    const docRef = await addDoc(collection(db, `user/${uid}/request`), {
+      id,
+      displayName,
+      photoURL,
+      date: fecha,
+    });
+  };
+};
+
+export const recivedRequestFriend = (
+  id = "",
+  displayName = "",
+  photoURL = "",
+  uid = ""
+) => {
+  const fecha = new Date();
+  return async () => {
+    const docRef = await addDoc(collection(db, `user/${id}/recived`), {
+      uid,
+      displayName,
+      photoURL,
+      date: fecha,
+    });
+  };
+};
+
+export const addFriend = (
+  uid = "",
+  displayName = "",
+  photoURL = "",
+  id = ""
+) => {
+  const fecha = new Date();
+  return async () => {
+    const docRef = await addDoc(collection(db, `user/${uid}/friends`), {
+      id,
+      displayName,
+      photoURL,
+      date: fecha,
+    });
+  };
+};
+
+// delete user from recived
+export const deleteUser = (id = "", uid = "") => {
+  return async () => {
+    const docRef = await setDoc(doc(db, `user/${id}/recived/${uid}`), {
+      uid,
+      displayName: "",
+      photoURL: "",
+      date: "",
+    });
+  };
+};
+// export const deleteRecived = (uid='',id='') => {
+//   const fecha = new Date();
+//   return async()=>{
+//     const docRef = await addDoc(collection(db, `user/${uid}/recived/`), {
+//       id,
+//     });
+//   }
+// };
+
+// update user
+export const updateUser = (displayName = "", photoURL = "") => {
+  return (dispatch) => {
+    updateProfile(auth.currentUser, { displayName, photoURL })
+      .then(() => {
+        dispatch(login(displayName, photoURL));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 };

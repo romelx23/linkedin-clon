@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { offToggle, onToggle } from "../../actions/toggle";
+import { offMenu, offToggle, onToggle, showMenu } from "../../actions/toggle";
 import { MenuProfile } from "../MenuProfile/MenuProfile";
 import { SearchUsers } from "../SearchUsers/SearchUsers";
 
@@ -19,6 +19,15 @@ export const Navbar = () => {
       dispatch(offToggle());
     }
   };
+    const { menuOn } = useSelector((state) => state.toggle);
+    const handleShow = () => {
+        if (!menuOn) {
+          dispatch(showMenu());
+        }
+        if (menuOn) {
+          dispatch(offMenu());
+        }
+      };
   return (
     <div div className="relative w-full">
       <div className={`bg-blue-600 bg-skin-button-muted ${theme} w-full h-14 flex justify-between px-5 text-white z-40`}>
@@ -29,7 +38,7 @@ export const Navbar = () => {
           <SearchUsers/>
         </div>
         <div className="flex flex-wrap ">
-          <div className="flex flex-col items-center absolute right-2 top-14 lg:flex-row lg:relative lg:top-0 bg-blue-600 lg:bg-transparent">
+          <div className={`${menuOn? 'scale-100':'scale-0'} flex flex-col items-center absolute right-2 top-14 lg:flex-row lg:relative lg:top-0 bg-blue-600 lg:bg-transparent origin-top transition lg:scale-100`}>
             <NavLink
               to="/home"
               className={({ isActive }) =>
@@ -117,7 +126,7 @@ export const Navbar = () => {
               <i className="fas fa-chevron-down text-sm hidden"></i>
             </div>
           </div>
-          <div className="px-3 pt-1 hover:lg:bg-blue-300 hover:cursor-pointer">
+          <div onClick={handleShow} className={`${menuOn?'bg-blue-400':'bg-transparent'} px-3 pt-1 hover:lg:bg-skin-fill ${theme} hover:cursor-pointer lg:bg-transparent`}>
             <i className="fas fa-bars"></i>
             <h3 className="hidden lg:block">Productos</h3>
           </div>

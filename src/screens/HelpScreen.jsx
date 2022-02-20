@@ -53,7 +53,7 @@ export const HelpScreen = () => {
               {/* icon more title */}
               <div className={`cardQuest bg-skin-button-muted hover:bg-skin-text-inverted ${theme}`}>
                 <div className=" flex items-center gap-2 font-medium">
-                  <i class="fas fa-question-circle"></i>
+                  <i className="fas fa-question-circle"></i>
                   <h3>Primera pregunta</h3>
                 </div>
                 <p className="">
@@ -66,7 +66,7 @@ export const HelpScreen = () => {
               </div>
               <div className={`cardQuest bg-skin-button-muted hover:bg-skin-text-inverted ${theme}`}>
                 <div className=" flex items-center gap-2 font-medium">
-                  <i class="fas fa-question-circle"></i>
+                  <i className="fas fa-question-circle"></i>
                   <h3>Primera pregunta</h3>
                 </div>
                 <p className="">
@@ -79,7 +79,7 @@ export const HelpScreen = () => {
               </div>
               <div className={`cardQuest bg-skin-button-muted hover:bg-skin-text-inverted ${theme}`}>
                 <div className=" flex items-center gap-2 font-medium">
-                  <i class="fas fa-question-circle"></i>
+                  <i className="fas fa-question-circle"></i>
                   <h3>Primera pregunta</h3>
                 </div>
                 <p className="">
@@ -92,7 +92,7 @@ export const HelpScreen = () => {
               </div>
               <div className={`cardQuest bg-skin-button-muted hover:bg-skin-text-inverted ${theme}`}>
                 <div className=" flex items-center gap-2 font-medium">
-                  <i class="fas fa-question-circle"></i>
+                  <i className="fas fa-question-circle"></i>
                   <h3>Primera pregunta</h3>
                 </div>
                 <p className="">

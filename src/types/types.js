@@ -7,6 +7,12 @@ export const types = {
     toggle_off:'[Toggle] Toggle Off',
     toggle_Darkmode:'[Toggle] Toggle Darkmode',
 
+    chat_on:'[Toggle] Chat On',
+    chat_off:'[Toggle] Chat Off',
+
+    menu_on:'[Toggle] Menu On',
+    menu_off:'[Toggle] Menu Off',
+
     themePage:'[Theme] Theme Page',
     
     createPost:'[Post] Create Post',

@@ -9,7 +9,7 @@ export const LoginScreen = () => {
   const handleLogin = () => {
     // dispatch(login('1412125','romel','htpp://google.com'))
     dispatch(LoginWithGoogle())
-    console.log('hola');
+    // console.log('hola');
   }
   const handleGoogleLogin=()=>{
     dispatch(LoginWithGoogle())

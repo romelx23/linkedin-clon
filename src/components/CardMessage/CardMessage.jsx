@@ -1,9 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 export const CardMessage = () => {
+  const {theme}=useSelector(state=>state.ui)
   return (
-    <div className="col-start-4 col-end-9 bg-blue-300 rounded-lg grid grid-cols-message text-white overflow-hidden">
-      <div className=" flex flex-col bg-green-300">
+    <div className="col-start-4 col-end-9 bg-blue-300 rounded-lg lg:grid lg:grid-cols-message lg:w-auto text-white overflow-hidden flex flex-col w-3/4">
+      <div className={`flex flex-col bg-skin-text-inverted ${theme} px-3 py-2 lg:p-0`}>
         <div className="w-full py-2 px-3 flex justify-between">
           <h3>Mensajes</h3>
           <div className="flex gap-2">
@@ -22,9 +24,10 @@ export const CardMessage = () => {
           <h3 className="font-semibold">No hay mensajes</h3>
         </div>
       </div>
-      <div className="col-start-2 col-end-3 p-2 flex flex-col bg-purple-300">
+      <div className={`col-start-2 col-end-3 p-3 lg:p-2 flex flex-col h-full bg-skin-button-muted ${theme}`}>
         <div className="w-full font-semibold text-left ">
-          <h3 className="border-b">Nuevos mensajes</h3>
+          <h3>Nuevos mensajes</h3>
+          <div className="border-b py-1"></div>
         </div>
         <div className="w-full h-full flex flex-col justify-between">
           <input

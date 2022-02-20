@@ -22,7 +22,7 @@ export const Modal = ({ modal, toggle }) => {
 
   const createPost = () => {
     const {publication} = values;
-    if(publication===''){
+    if(publication.trim()===''){
       Swal.fire({
         title: 'Debe llenar el campo',
         icon:'warning'

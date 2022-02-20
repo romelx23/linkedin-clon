@@ -4,12 +4,13 @@ import { Layout } from "../components/Layout/Layout";
 import { Navbar } from "../components/Navbar/Navbar";
 
 export const MessageScreen = () => {
+  
   return (
     <div>
       <Navbar />
       {/* <div className="bg-blue-700 min-h-screen pt-3"> */}
       <Layout>
-        <div className="w-full h-message flex justify-center pt-3">
+        <div className="w-full h-message flex justify-center pt-5">
           <CardMessage />
         </div>
       {/* </div> */}
